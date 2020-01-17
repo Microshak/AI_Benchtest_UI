@@ -1,0 +1,21 @@
+.speech
+{
+    text-decoration: none;
+}
+    
+.roundbox {
+    border-radius: 25px;
+    border: 2px solid silver;
+    padding: 20px;
+    width: 276px;
+    height: 182px;
+    float: left;
+    text-align: center;
+    margin: 25px;
+}
+
+.maindiv
+{
+
+    float:left;
+}
