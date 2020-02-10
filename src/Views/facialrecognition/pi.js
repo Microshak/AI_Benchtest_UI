@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -8,6 +8,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import './pi.css';
+import Camera from '../../Components/Camera';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,6 +80,7 @@ function RFPi() {
     <div class="main">
       <div class="wrapper">
       <FormControl className={classes.formControl}>
+        <Camera></Camera>
         <InputLabel id="demo-simple-select-label">Resolution</InputLabel>
         <Select
           labelId="demo-simple-select-label"

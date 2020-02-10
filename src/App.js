@@ -88,6 +88,20 @@ function App() {
           <CssBaseline />
           <Router>
           <Header>
+
+          <Toolbar>
+              <CollapseBtn
+                component={IconButton}
+                className={headerStyles.leftTrigger}
+              >
+                <CollapseIcon />
+              </CollapseBtn>
+              <SidebarTrigger className={headerStyles.leftTrigger}>
+                <SidebarTriggerIcon />
+              </SidebarTrigger>
+              
+            </Toolbar>
+
       <h1 className="head">IoT/AI Bench Kit</h1>
           </Header>
           <Content>
