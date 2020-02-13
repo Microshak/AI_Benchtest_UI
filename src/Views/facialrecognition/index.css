@@ -1,0 +1,25 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .main  {
+margin:20px;
+  }
+
+
+.configdiv
+{
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+}
+#imageDiv{
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.imageHolder
+{
+width:100%;
+height:100px;
+overflow:hidden;
+
+}

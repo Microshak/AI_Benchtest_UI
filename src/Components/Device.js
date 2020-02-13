@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import './Camera.css';
+import './Device.css';
 
 const useStyles = makeStyles(theme => ({
     typography: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   
 
 
-  export default function Camera({camera, onCameraChange}) {
+  export default function Device(props) {
   
   
   
@@ -24,12 +24,33 @@ const useStyles = makeStyles(theme => ({
   
     const [data, setData] = useState([]);
     useEffect(() => {
-      axios.get('https://ai-benchtest.azurewebsites.net/cam')
+      axios.get('https://ai-benchtest.azurewebsites.net/device')
           .then(res => {
-              console.log(res.data[0])
-              onCameraChange(res.data[0].ip_address)
-              setData(res.data);
-  
+
+            let ret = []
+            console.log(props.category)
+            for(var x = 0; x<res.data.length; x++)
+          {
+            for(var y = 0; y< res.data[x].algorithm.length; y++)
+            {
+              if(res.data[x].algorithm[y].category == props.category)
+              {
+                ret.push(res.data[x]);
+                break;
+
+              }
+
+            }
+
+
+          }
+
+          props.onDeviceChange(ret[0].ip_address)
+
+
+
+
+              setData(ret);
           })
           .catch(err => {
             
@@ -48,15 +69,16 @@ const useStyles = makeStyles(theme => ({
     const open = Boolean(anchorEl);
     const id = open ? 'stream' : 'image';
   
-    function handleimgClick(event) {
-      onCameraChange(event.target.name); // pass any argument to the callback
+    function handleDeviceClick(event) {
+      console.log('d' + event.target.name)
+      props.onDeviceChange(event.target.name); // pass any argument to the callback
       setAnchorEl(null);
     }
 
 return (
     <div>
       <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-        Camera
+        Device
       </Button>
       <Popover
         id={id}
@@ -76,12 +98,12 @@ return (
  <div className="grid">
  {data.map((item, index) => (
        
-         <img className="cropped" key={item.host_name} onClick={handleimgClick}  name={item.ip_address} title={item.host_name} src={"http://" + item.ip_address + ":5000/"+id+".jpg?height=200&width=200&downsample=0"} />
+         <img className="cropped" key={item.host_name} onClick={handleDeviceClick}  name={item.ip_address} title={item.host_name} src={item.name + ".jpg"} />
        
       ))}
    
    </div>
-        <Typography className={classes.typography}>Select a Camera</Typography>
+        <Typography className={classes.typography}>Select a Device</Typography>
       </Popover>
     </div>
   );

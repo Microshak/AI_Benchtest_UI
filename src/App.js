@@ -11,106 +11,149 @@ import {
  
 import Pi from './Views/pi/pi';
 import FacialRecognition from './Views/facialrecognition';
-import RFPi from './Views/facialrecognition/pi'
+//import RFPi from './Views/facialrecognition/pi'
 import Home from './Views/home';
 import Vision from './Views/vision'
 
-import MicroNavHeader from './Components/microNavHeader'
 
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Typography from "@material-ui/core/Typography";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import {
-  Root,
-  Header,
-  Sidebar,
-  Content,
-  Footer,
-  CollapseBtn,
-  CollapseIcon,
-  SidebarTrigger,
-  SidebarTriggerIcon
-} from "@mui-treasury/layout";
-import {
-  defaultLayoutPreset,
-  standardLayoutPreset,
-  fixedLayoutPreset,
-  contentBasedLayoutPreset,
-  cozyLayoutPreset,
-  muiTreasuryPreset
-} from "@mui-treasury/layout/presets";
 
-import Divider from '@material-ui/core/Divider';
+
+
+import IconButton from "@material-ui/core/IconButton";
+
+
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import FaceIcon from '@material-ui/icons/Face';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
+import FilterVintageIcon from '@material-ui/icons/FilterVintage';
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
+import TagFacesIcon from '@material-ui/icons/TagFaces';
+import PermIdentityIcon from '@material-ui/icons/PermIdentity';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+
+const drawerWidth = 260;
 
 
-const presets = {
-  createDefaultLayout: defaultLayoutPreset,
-  createStandardLayout: standardLayoutPreset,
-  createFixedLayout: fixedLayoutPreset,
-  createContentBasedLayout: contentBasedLayoutPreset,
-  createCozyLayout: cozyLayoutPreset,
-  createMuiTreasuryLayout: muiTreasuryPreset
-};
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+  },
+  appBar: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing(3),
+  },
+}));
 
-// add presets.create{}() to config props in Root to change the behavior, looking and layout
-// <Root config={presets.createCozyLayout()}> ...
-function App() {
-  const [loading, setLoading] = useState(false);
-  const [preset, setPreset] = useState("createStandardLayout");
-  const [data, setData] = useState({
-    header: true,
-    nav: true,
-    content: true,
-    footer: true
-  });
-  return loading ? (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <Typography variant={"h2"}>Changing Preset...</Typography>
-    </div>
-  ) : (
-    <Root config={presets[preset]}>
-      {({ headerStyles, sidebarStyles }) => (
-        <>
-          <CssBaseline />
-          <Router>
-          <Header>
 
-          <Toolbar>
-              <CollapseBtn
-                component={IconButton}
-                className={headerStyles.leftTrigger}
-              >
-                <CollapseIcon />
-              </CollapseBtn>
-              <SidebarTrigger className={headerStyles.leftTrigger}>
-                <SidebarTriggerIcon />
-              </SidebarTrigger>
-              
-            </Toolbar>
+export default function App() {
+  const classes = useStyles();
+return (
+  <Router>
+  <div className={classes.root}>
+  <CssBaseline />
+  <AppBar position="fixed" className={classes.appBar}>
+    <Toolbar>
+      <Typography variant="h6" noWrap>
+        AI Test Bench
+      </Typography>
+    </Toolbar>
+  </AppBar>
+  <Drawer
+    className={classes.drawer}
+    variant="permanent"
+    classes={{
+      paper: classes.drawerPaper,
+    }}
+    anchor="left">
+    <div className={classes.toolbar} />
+    <Divider />
+   
+    <div className="menuhead"> 
+        Computer Vision
+        </div>
+    <List>
+        <ListItem button component={Link} to="/facialrecognition"> 
+          <ListItemIcon> <FaceIcon /></ListItemIcon>
+          <ListItemText primary="Facial Recognition " />
+        </ListItem>
 
-      <h1 className="head">IoT/AI Bench Kit</h1>
-          </Header>
-          <Content>
+       
+        <ListItem button component={Link} to="/Pose"> 
+          <ListItemIcon> <FilterVintageIcon /></ListItemIcon>
+          <ListItemText primary="Object Detection" />
+        </ListItem>
+        <ListItem button component={Link} to="/Pose"> 
+          <ListItemIcon> <EmojiPeopleIcon /></ListItemIcon>
+          <ListItemText primary="Pose Detection" />
+        </ListItem>
+
+        <ListItem button component={Link} to="/Pose"> 
+          <ListItemIcon> <TagFacesIcon /></ListItemIcon>
+          <ListItemText primary="Sentiment Analysis" />
+        </ListItem>
+
+        <ListItem button component={Link} to="/Pose"> 
+          <ListItemIcon> <PermIdentityIcon /></ListItemIcon>
+          <ListItemText primary="Face ID" />
+        </ListItem>
+
+        <ListItem button component={Link} to="/Pose"> 
+          <ListItemIcon> <EqualizerIcon /></ListItemIcon>
+          <ListItemText primary="Demographics" />
+        </ListItem>
+
+
+
+    </List>
+    <Divider />
+    <div className="menuhead"> 
+        Language Understanding
+        </div>
+    <List>
+      
+        <ListItem button component={Link} to="/HAAR"> 
+          <ListItemIcon> <RecordVoiceOverIcon /></ListItemIcon>
+          <ListItemText primary="LUIS" />
+        </ListItem>
+
+       </List>
+  </Drawer>
+  <main className={classes.content}>
+    <div className={classes.toolbar} />
+
+
+
+    
            <Switch>
             <Route path="/pi">
             <Pi />
-          </Route>
-          <Route path="/facialrecognition/pi">
-            <RFPi />
           </Route>
           <Route path="/facialrecognition">
             <FacialRecognition />
@@ -124,15 +167,13 @@ function App() {
 
           
         </Switch>
-            </Content>
-            </Router>
-          <Footer></Footer>
-        </>
-      )}
-    </Root>
-  );
-}
+            
+
+    </main>
+    </div>
+</Router>
+)
+};
 
 
 
-export default App;

@@ -5,7 +5,7 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import './Camera.css';
+import './Algorithm.css';
 
 const useStyles = makeStyles(theme => ({
     typography: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   
 
 
-  export default function Camera({camera, onCameraChange}) {
+  export default function Algorithm({camera, onCameraChange}) {
   
   
   
@@ -26,10 +26,7 @@ const useStyles = makeStyles(theme => ({
     useEffect(() => {
       axios.get('https://ai-benchtest.azurewebsites.net/cam')
           .then(res => {
-              console.log(res.data[0])
-              onCameraChange(res.data[0].ip_address)
               setData(res.data);
-  
           })
           .catch(err => {
             
@@ -49,14 +46,14 @@ const useStyles = makeStyles(theme => ({
     const id = open ? 'stream' : 'image';
   
     function handleimgClick(event) {
+      console.log('d' + event.target.name)
       onCameraChange(event.target.name); // pass any argument to the callback
-      setAnchorEl(null);
     }
 
 return (
     <div>
       <Button aria-describedby={id} variant="contained" color="primary" onClick={handleClick}>
-        Camera
+        Algorithm
       </Button>
       <Popover
         id={id}

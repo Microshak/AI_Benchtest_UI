@@ -13,7 +13,7 @@ import {
 function Home() {
   
   return (
-    <div class="maindiv">
+    <div className="maindiv">
 
 <div>
 <Link to="/Vision" className="speech roundbox" >
