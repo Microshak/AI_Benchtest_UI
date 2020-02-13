@@ -15,23 +15,12 @@ const useStyles = makeStyles(theme => ({
   
 
 
-  export default function Resolution({camera, onCameraChange}) {
+  export default function Resolution(props) {
   
   
   
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
-  
-    const [data, setData] = useState([]);
-    useEffect(() => {
-      axios.get('https://ai-benchtest.azurewebsites.net/cam')
-          .then(res => {
-              setData(res.data);
-          })
-          .catch(err => {
-            
-          })
-  }, []);
   
 
     const handleClick = event => {
@@ -45,9 +34,9 @@ const useStyles = makeStyles(theme => ({
     const open = Boolean(anchorEl);
     const id = open ? 'stream' : 'image';
   
-    function handleimgClick(event) {
+    function handleResolutionClick(event) {
       console.log('d' + event.target.name)
-      onCameraChange(event.target.name); // pass any argument to the callback
+      props.onResolutionChange(event.target.name); // pass any argument to the callback
     }
 
 return (
@@ -71,11 +60,23 @@ return (
       >
         
  <div className="grid">
- {data.map((item, index) => (
+
+ <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.20"} />
+
+ <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.30"} />
+
+ <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.40"} />
+
+ <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.50"} />
        
-         <img className="cropped" key={item.host_name} onClick={handleimgClick}  name={item.ip_address} title={item.host_name} src={"http://" + item.ip_address + ":5000/"+id+".jpg?height=200&width=200&downsample=0"} />
+ <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.55"} />
+
+ <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.60"} />
+         <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.65"} />
+         <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.70"} />
+         <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.74"} />
+         <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.78"} />
        
-      ))}
    
    </div>
         <Typography className={classes.typography}>Select a Camera</Typography>

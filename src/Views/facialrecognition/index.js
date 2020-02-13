@@ -100,7 +100,11 @@ function RFPi() {
     setDevice(deviceip)
     handleChange(camera,deviceip)
   }
-
+function handleResolutionChange(percent){
+  setRez(percent)
+  handleChange(camera,device)
+ 
+}
 
 
   return (
@@ -110,7 +114,7 @@ function RFPi() {
       <div className="configdiv">
         <Camera onCameraChange={handleCameraChange} name={camera}></Camera>
         <Device onDeviceChange={handleDeviceChange} name={device} category="Facial Recognition"></Device>
-        <Resolution onCameraChange={handleCameraChange} name={camera}></Resolution>
+        <Resolution onResolutionChange={handleResolutionChange} camera={camera} device={device}></Resolution>
         <Algorithm onCameraChange={handleCameraChange} name={camera}></Algorithm>
  
         </div>
