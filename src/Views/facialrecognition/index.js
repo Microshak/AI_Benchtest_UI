@@ -54,9 +54,6 @@ function RFPi() {
   const [labelWidth, setLabelWidth] = React.useState(0);
   const [sample, setSample] = React.useState(0);
 
-  const handleSliderChange = (event, newValue) => {
-    setSample(newValue / 100);
-  };
 
   //React.useEffect(() => {
   //  setLabelWidth(inputLabel.current.offsetWidth);
@@ -65,9 +62,9 @@ function RFPi() {
   function handleChange(cameraip, deviceip){
     //setRez(event.target.value);
     
-    setRez(["800", "600"])
-    setHeight(800)
-    setWidth(600)
+    setRez(["1000", "1200"])
+    setHeight(400)
+    setWidth(950)
     var c = camera == "none"? cameraip:camera;
     var d = device == "none"? deviceip:device;
     console.log(c)
@@ -76,9 +73,9 @@ function RFPi() {
     
 
      var newStyle = {
-      width: '800px',
-    height: '600px',
-    backgroundImage: "url(http://"+  d +":8000/haar/image.jpg?height="+height + "&width="+width+"&downsample="+ sample + "&camera="+ c + ")"
+    //  width: '800px',
+   // height: '600px',
+   // backgroundImage: "url(http://"+  d +":8000/haar/image.jpg?height="+height + "&width="+width+"&downsample="+ sample + "&camera="+ c + ")"
     
     };
     
@@ -117,9 +114,13 @@ function handleResolutionChange(percent){
         <Resolution onResolutionChange={handleResolutionChange} camera={camera} device={device}></Resolution>
         <Algorithm onCameraChange={handleCameraChange} name={camera}></Algorithm>
  
+      
+      
         </div>
     
+      
       <div className="wrapper">
+      <img id="bg" style={imagestyle} src={"http://"+  device +":8000/haar/image.jpg?height="+height + "&width="+width+"&downsample="+ sample + "&camera="+ camera}></img>
       
       
         
@@ -127,29 +128,11 @@ function handleResolutionChange(percent){
        
 
     <div className={classes.root}>
-      <Typography id="discrete-slider" gutterBottom>
-        Down Sample
-      </Typography>
-      <Slider
-        defaultValue={0}
-        //getAriaValueText={sample}
-        aria-labelledby="discrete-slider"
-        valueLabelDisplay="auto"
-        step={10}
-        marks
-        min={0}
-        max={90}
-        onChange={handleSliderChange}
-      />
+      
       </div>
-      <div>Computed Resolution:{Math.round((1- sample) * width)} X {Math.round((1 -sample) * height)}</div>
-      {camera}
-
+      
+    
       </div>
-      <div className="imageHolder">
-      <div id="imageDiv" style={imagestyle}></div>
-      </div> 
-           <img id="bg" style={imagestyle} src={"http://"+  device +":8000/haar/image.jpg?height="+height + "&width="+width+"&downsample="+ sample + "&camera="+ camera}></img>
       
          </div>
   );

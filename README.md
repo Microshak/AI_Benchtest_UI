@@ -1,8 +1,9 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Docker Local
+docker build -t sample:dev .
+docker run -v ${PWD}:/app -v /app/node_modules -p 3001:3000 --rm sample:dev
 
-In the project directory, you can run:
+
 
 ### `npm start`
 

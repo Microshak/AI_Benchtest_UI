@@ -1,16 +1,15 @@
 .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
+margin-top:10px; 
+}
   .main  {
-margin:20px;
+margin:0px;
   }
 
 
 .configdiv
 {
   display: grid;
-  grid-template-columns: repeat(4, 2fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 #imageDiv{
   background-repeat: no-repeat;

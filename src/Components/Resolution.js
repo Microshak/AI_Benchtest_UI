@@ -63,19 +63,14 @@ return (
 
  <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.20"} />
 
- <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.30"} />
-
+ 
  <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.40"} />
 
- <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.50"} />
        
  <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.55"} />
 
- <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.60"} />
          <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.65"} />
-         <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.70"} />
          <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.74"} />
-         <img className="cropped" key="10" onClick={handleResolutionClick}  percent="10"  src={"http://" + props.camera + ":5000/"+id+".jpg?height=200&width=200&downsample=0.78"} />
        
    
    </div>
